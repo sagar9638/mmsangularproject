@@ -1,0 +1,16 @@
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;position: relative;" (click)="Back()">
+        <b>Members Hierarchy</b>
+        <span class="headerSpan"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row col-md-12">
+            <div [class]="classNameTree">
+                <div id="tree" #treeValue class="orgChart" (click)="toggle($event)"></div>
+            </div>
+            <div [class]="classNameTreeChild">
+                <div id="treeChild" #treeChild class="orgChart"></div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

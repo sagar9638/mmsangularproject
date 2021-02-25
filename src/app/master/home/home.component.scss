@@ -1,0 +1,232 @@
+
+  .polar{
+    background:#222b455c;
+    padding:1rem;
+    box-shadow: 0 0.5rem 1rem gray;
+    
+  }
+  .polar img{
+    max-width:100%;
+    height:auto;
+    
+  }
+  .container{
+    margin-left: 35px;
+    margin-bottom: 20px;
+  }
+  .caption{
+   font-size:1rem;
+    text-align:center;
+    line-height:1.5em;
+  }
+  .contents{
+    width:30%;
+    display:inline-block;
+    margin-top:2rem;
+    filter:grayscale(100%);
+    
+  }
+  .contents .polar:before{
+    content:'';
+    position:absolute;
+    z-index:-1;
+    transtion:all 0.30s;
+    
+  }
+  
+  div.one{ transform: rotate(10deg);}
+  div.two{
+     transform: rotate(-10deg);
+  }
+  div.three{
+     transform: rotate(10deg);
+  }
+  .contents:hover{
+    filter:grayscale(0%);
+     transform: rotate(0);
+    -ms-transform: scale(1.2); 
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); 
+  
+  }
+  /***************************************************************************************************/
+
+
+.container1 {
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 10px 10px 30px #2C243F;
+}
+
+.card {
+    height: 320px;
+    width: 100%;
+    text-align: left;
+    padding: 50px 40px;
+}
+
+.card small {
+    color: rgba(255, 255, 255, .7);
+    font-weight: 700;
+}
+
+.card h1 {
+    margin: 10px 0px 20px;
+}
+
+.card p {
+    line-height: 22px;
+    width: 210px;
+    height: 70px;
+}
+
+.card div {
+    margin-top: 25px;
+}
+
+.card div a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.card div a:hover {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card div a i {
+    padding-left: 5px;
+    color: #fff;
+}
+
+/* Cards colors */
+.blue {
+    background-color: #8d7DFE;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.purple {
+    background-color: #C67AFF;
+}
+
+.pink {
+    background-color: #FF73BC;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Media queries */
+@media screen and (max-width: 375px) {
+    .container1 {
+        width: 90%;
+        margin: 20px auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blue {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-left-radius: 0;
+    }
+
+    .pink {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 0;
+    }
+}
+
+
+/********************************************************************************************************/
+
+
+  .container3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  
+    .box {
+      width: 32vh;
+      height: 300px;
+      position: relative;
+      display: flex;
+      margin: 40px;
+  
+      &:hover {
+        .imgBx {
+          transform: translate(0, -35px);
+        }
+  
+        .content {
+          transform: translate(0, 35px);
+        }
+      }
+    }
+  
+    .imgBx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s ease-in-out;
+      z-index: 2;
+  
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s ease-in-out;
+        z-index: 2;
+        object-fit: cover;
+      }
+    }
+  
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s ease-in-out;
+      background: #fff;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 15px;
+  
+      h2 {
+        font-size: 20px;
+        color: #111;
+        line-height: 20px;
+        font-weight: 500;
+        text-align: center;
+  
+        span {
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .box:hover {
+      .imgBx {
+        transform: translate(35px, -35px) !important;
+      }
+      .content {
+        transform: translate(-35px, 35px) !important;
+      }
+    }
+  }
+  

@@ -1,0 +1,25 @@
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;" ><b>User Details</b></nb-card-header>
+    <nb-card-body>
+        <div class="row" >
+            <table class="col-md-12"  >
+                <thead style="border: 3px solid #4d4f54;" >
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>DOB</th>
+                    <th>City</th>
+                    <th>Mobile No</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataset" style="border: 2px solid #babdc5;" >
+                        <td>{{item.Name}}</td>
+                        <td>{{item.UserName}}</td>
+                        <td>{{item.DOB}}</td>
+                        <td>{{item.City}}</td>
+                        <td>{{item.MobileNo}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,149 @@
+<nb-card style="margin-bottom: 5px;margin-top: 2px;">
+    <nb-card-header style="padding: 5px;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center" style="font-size: larger;">
+                <a title="welcome joining our team" (click)="openNewWindow()">Welcome Joining Our Team</a>
+            </div>
+            <div class="col-md-4"></div> 
+            <!-- <button class="btn third" (click)="open()" > welcome joining our team</button> -->
+        </div>
+    </nb-card-header>
+</nb-card>
+<nb-card>
+    <div class="row">
+        <div class="col-md-12 text-center" style="padding: 0px;">
+            <iframe class="col-md-12 " style="border: 2px;" height="520" width="100"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        </div>
+    </div>
+</nb-card>
+
+<nb-card>
+    <nb-card-header>
+        <div class="col-md-12 text-center" style="font-size: larger;">
+            UPCOMING EVENTS
+        </div>
+    </nb-card-header>
+</nb-card>
+
+<nb-card>
+    <nb-card-header>
+        <div class="col-md-12 text-center" style="font-size: larger;">
+            BEST LEADER
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row ">
+            <div class="container3  text-center" *ngFor="let item of ArrayBestLeaderData">
+                <div class="box ">
+                    <div class="imgBx">
+                        <img src="https://i.ibb.co/P97BxG9/person-1.png" alt="">
+                    </div>
+                    <div class="content">
+                        <h2>{{item.Name}}<br /> </h2>
+                        <!-- <span>Senior Front-end Developer</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+
+<!-- <nb-card>
+    <nb-card-body>
+        <iframe class="col-md-12" height="400px" style="border-radius: 45px;border: 2px;"
+            src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe> -->
+
+<!-- 
+        <div class="row col-md-12" style="margin-top: 5%;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <iframe class="col-md-12" height="256px" style="border-radius: 45px;border: 2px;"
+                    src="https://www.youtube.com/embed/Yg0k8ylbZe0">
+                </iframe>
+            </div>
+            <div class="col-md-2"></div>
+        </div> -->
+
+
+<!-- </nb-card-body>
+</nb-card> -->
+
+
+<nb-card>
+    <nb-card-body>
+        <div>
+
+
+
+            <div class="container1">
+                <div class="card blue">
+                    <small>Featured</small>
+                    <h1>Challenge</h1>
+                    <p>Design an icon set with your favorite hobbies.</p>
+                    <div>
+                        <a href="#">View Details
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card purple">
+                    <small>Blog</small>
+                    <h1>Interviews</h1>
+                    <p>8 examples of interviews with people who traveled trough Europe.</p>
+                    <div>
+                        <a href="#">Read Post
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card pink">
+                    <small>Daily</small>
+                    <h1>Practice</h1>
+                    <p>Generate daily exercices to improve your skills.</p>
+                    <div>
+                        <a href="#">Generate exercice
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet"> -->
+<!-- <div class="container text-center">
+    <div class="contents one">
+        <div class="polar">
+
+            <img src="https://images.unsplash.com/photo-1607591605038-08cf899600f5?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8dG93SlpGc2twR2d8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="">
+            <div class="caption">Elena Gilbert</div>
+        </div>
+    </div>
+
+    <div class="contents two">
+        <div class="polar ">
+            <img src="https://images.unsplash.com/photo-1597602746850-b237f0cb8728?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDcxfHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="">
+            <div class="caption">Rebekah mikelson</div>
+        </div>
+    </div>
+    <div class="contents three">
+        <div class="polar ">
+            <img src="https://images.unsplash.com/photo-1545209536-c79b0603d7ad?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDk5fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                alt="">
+            <div class="caption">Caroline forbes</div>
+        </div>
+    </div>
+
+</div> -->

@@ -1,0 +1,39 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'ngx-one-column-layout',
+  styleUrls: ['./one-column.layout.scss'],
+  template: `
+    <nb-layout windowMode>
+      <nb-layout-header *ngIf="headerDisplayFlag" fixed>
+        <ngx-header></ngx-header>
+      </nb-layout-header>
+
+      <nb-sidebar class="menu-sidebar" *ngIf="headerDisplayFlag" tag="menu-sidebar" responsive>
+        <ng-content select="nb-menu"></ng-content>
+      </nb-sidebar>
+
+      <nb-layout-column>
+        <ng-content select="router-outlet"></ng-content>
+      </nb-layout-column>
+
+    </nb-layout>
+  `,
+})
+export class OneColumnLayoutComponent {
+
+
+//   <nb-layout-footer fixed>
+//   <ngx-footer></ngx-footer>
+// </nb-layout-footer>
+
+  headerDisplayFlag = true;
+  constructor(
+  ) {
+  }
+
+  ngOnInit() {
+  }
+
+
+}

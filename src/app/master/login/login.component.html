@@ -1,0 +1,53 @@
+<!-- <div class="form_wrapper">
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Login</h2>
+        </div>
+        <form>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" name="UserName" [(ngModel)]="UserName" placeholder="UserName" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                <input type="password" name="password" [(ngModel)]="Password" placeholder="Password" required />
+            </div>
+            <input class="button" type="submit" (click)="Login()" value="Login" />
+            <div class="input_field" (click)="RagisterPage()" style="text-align: center;">
+                <b>Don't have an account yet?</b> <a> Sign Up</a>
+            </div>
+
+        </form>
+    </div>
+</div> -->
+<ngx-spinner></ngx-spinner>
+<div class="form_wrapper">
+    <div class=" form_container">
+        <div class="col-md-12">
+            <nb-card>
+                <nb-card-header>
+                    <h2>Login</h2>
+                </nb-card-header>
+                <nb-card-body>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="label">User Name</label>
+                            <input type="text" name="UserName" nbInput fullWidth [(ngModel)]="UserName"
+                                placeholder="UserName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="label">Password</label>
+                            <input type="password" name="password" nbInput fullWidth [(ngModel)]="Password"
+                                placeholder="Password" required />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" fullWidth nbButton outline (click)="Login()" status="success">LogIn</button>
+                        </div>
+                        <div class="input_field" (click)="RagisterPage()" style="text-align: center;">
+                            <b>Don't have an account yet?</b> <a> Sign Up</a>
+                        </div>
+                    </form>
+                </nb-card-body>
+            </nb-card>
+        </div>
+
+    </div>
+</div>

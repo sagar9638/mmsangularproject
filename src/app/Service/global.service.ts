@@ -163,7 +163,6 @@ export class GlobalService {
   }
 
   encryptUsingAES256(value) {
-    debugger
     let encrypted = null;
     if (value != null && value != undefined && value != "") {
 
@@ -268,7 +267,7 @@ export class GlobalService {
     const config = {
       status: _icontype
     };
-    this.toastrService.show(_title,_icontype,config)
+    this.toastrService.show(_title, _icontype, config)
   }
 
 
@@ -451,7 +450,7 @@ export class GlobalService {
           document.getElementById('ErrorMsg').style.backgroundColor = '';
           document.getElementById('ErrorMsg').style.display = 'none';
           document.getElementById('ErrorMsg').innerText = '';
-          
+
         }
       });
     });
@@ -693,7 +692,6 @@ export class GlobalService {
 
   async checkUserCrudRights(FormName, CrudFlg): Promise<boolean> {
     try {
-      debugger
       let obj = {
         p_criteria: " UPPER(u.user_id) =  UPPER(''" + this.GetSessionStorage("User_ID").replace(/"/g, '') + "'') and mm.obj_title = ''" + FormName + "'' ",
       }
@@ -752,6 +750,14 @@ export class GlobalService {
 
   SetheaderDisplayFlag(_SetheaderDisplayFlag: boolean = true) {
     return _SetheaderDisplayFlag;
+  }
+
+  Authentication() {
+    let GetLoginFlag = this.GetSessionStorage("LoginFlg");
+    if (GetLoginFlag == undefined && GetLoginFlag == null) {
+          this.router.navigate(['master/login']);
+      }
+    
   }
 
 }

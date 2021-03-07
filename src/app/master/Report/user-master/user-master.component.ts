@@ -15,7 +15,12 @@ export class UserMasterComponent implements OnInit {
   dataset: any[];
   async ngOnInit(): Promise<void> {
     this.dataset = [];
-    let res = await this.service.GetDataAPIS('GetUser', 'Get', {});
+    let objBody = [
+      {
+        p_Condition: " and RefId like '1.5%' "
+      }
+    ]
+    let res = await this.service.GetDataAPIS('GetUser', 'Post', objBody);
     if (!!res) {
       this.dataset = res;
     }else{

@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
 
     this.spinner.show();
 
-    let GetValidUserNameCheck = this.ValidUserNameCheck();
+    let GetValidUserNameCheck = await this.ValidUserNameCheck();
     if(!GetValidUserNameCheck)
     {
       return

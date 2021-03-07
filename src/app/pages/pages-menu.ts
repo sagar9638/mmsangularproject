@@ -37,6 +37,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: 'master/UserProfile',
   },
   {
+    title: 'Menu Master',
+    icon: 'layout-outline',
+    link: 'master/MenuMaster',
+  },
+  {
+    title: 'Designation Master',
+    icon: 'layout-outline',
+    link: 'master/DesignationMaster',
+  },
+  {
+    title: 'Lead User',
+    icon: 'layout-outline',
+    link: 'master/Leads',
+  },
+  {
     title: 'User Details',
     icon: 'layout-outline',
     link: 'master/userDetail',

@@ -1,4 +1,4 @@
-<nb-card style="margin-bottom: 5px;margin-top: 2px;">
+<!-- <nb-card style="margin-bottom: 5px;margin-top: 2px;">
     <nb-card-header style="padding: 5px;">
         <div class="row">
             <div class="col-md-4"></div>
@@ -6,18 +6,25 @@
                 <a title="welcome joining our team" (click)="openNewWindow()">Welcome Joining Our Team</a>
             </div>
             <div class="col-md-4"></div> 
-            <!-- <button class="btn third" (click)="open()" > welcome joining our team</button> -->
         </div>
     </nb-card-header>
-</nb-card>
-<nb-card>
-    <div class="row">
-        <div class="col-md-12 text-center" style="padding: 0px;">
-            <iframe class="col-md-12 " style="border: 2px;" height="520" width="100"
-                src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+</nb-card> -->
+
+<!-- Main Video -->
+
+    <nb-card>
+        <div class="row">
+            <div class="col-md-12 text-center" style="padding: 0px;">
+                <iframe class="col-md-12 " style="border: 2px;" height="520" width="100"
+                    src="../../../assets/Video/Finale fix audio.mp4"></iframe>
+            </div>
         </div>
-    </div>
-</nb-card>
+    </nb-card>
+
+<!-- End Main Video -->
+
+
+<!-- Upcoming Event -->
 
 <nb-card>
     <nb-card-header>
@@ -25,16 +32,41 @@
             UPCOMING EVENTS
         </div>
     </nb-card-header>
+    <nb-card-body>
+        <div>
+            <section>
+
+                <div class="events">
+                    <ul>
+                        <li>
+                            <div class="time">
+                                <h2>24<br><span>June</span></h2>
+                            </div>
+                            <div class="details">
+                                <h3>Where does it come from</h3>
+                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                <a (click)="openEvent()">View Details</a>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </nb-card-body>
 </nb-card>
+
+<!-- End Upcoming Event -->
 
 <nb-card>
     <nb-card-header>
         <div class="col-md-12 text-center" style="font-size: larger;">
-            BEST LEADER
+            LEADERSHIP CABIN RACE
         </div>
     </nb-card-header>
     <nb-card-body>
-        <div class="row ">
+        <!-- <div class="row ">
             <div class="container3  text-center" *ngFor="let item of ArrayBestLeaderData">
                 <div class="box ">
                     <div class="imgBx">
@@ -42,48 +74,140 @@
                     </div>
                     <div class="content">
                         <h2>{{item.Name}}<br /> </h2>
-                        <!-- <span>Senior Front-end Developer</span> -->
+                        <!- - <span>Senior Front-end Developer</span> - ->
                     </div>
                 </div>
             </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of ArrayBestLeaderData">
+                        <div class="our-team">
+                            <div class="picture">
+                                <img class="img-fluid" src="https://i.ibb.co/P97BxG9/person-1.png">
+                            </div>
+                            <div class="team-content">
+                                <div class="name" style="font-size: x-large;font-weight: bold; margin-bottom: 5px;">
+                                    {{item.Name}}</div>
+                                <div class="title" style="font-size: medium; color: #fff;">Web Developer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </nb-card-body>
 </nb-card>
+
 <nb-card>
     <nb-card-body>
-        <div>
-            <div class="container1">
-                <div class="card blue">
-                    <small>Featured</small>
-                    <h1>Challenge</h1>
-                    <p>Design an icon set with your favorite hobbies.</p>
-                    <div>
-                        <a href="#">View Details
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card purple">
-                    <small>Blog</small>
-                    <h1>Interviews</h1>
-                    <p>8 examples of interviews with people who traveled trough Europe.</p>
-                    <div>
-                        <a href="#">Read Post
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="card pink">
-                    <small>Daily</small>
-                    <h1>Practice</h1>
-                    <p>Generate daily exercices to improve your skills.</p>
-                    <div>
-                        <a href="#">Generate exercice
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="row col-md-12">
+            <div class="col-md-4">
+                <nb-card style="height: 260px;">
+                    <nb-card-body style="overflow-y: hidden;">
+                        <div class="form-group">
+                            <button type="submit" fullWidth nbButton outline shape="round"
+                                status="primary">Gallary</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" fullWidth nbButton outline shape="round"
+                                status="success">Achievement</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" fullWidth nbButton outline shape="round"
+                                status="warning">Goals</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" fullWidth nbButton outline shape="round" status="danger">Get
+                                Motivation</button>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
             </div>
+            <div class="col-md-4">
+                <nb-card style="height: 260px;">
+                    <nb-card-header class="text-center" style="font-size: larger;padding: 6px;">
+                        BLOG
+                    </nb-card-header>
+                    <nb-card-body style="font-size: small;">
+                        Magnesium is one of the six essential macro-minerals that is required by the body for energy
+                        production and synthesis of protein and enzymes. It contributes to the development of bones and
+                        most importantly it is responsible for synthesis of your DNA and RNA. A new report that has
+                        appeared in theBritish Journal of Cancer, gives you another reason to add more magnesium to your
+                        diet...
+                    </nb-card-body>
+                    <nb-card-footer class="text-center" style="font-size: medium;padding: 6px;">
+                        READ MORE
+                    </nb-card-footer>
+                </nb-card>
+            </div>
+            <div class="col-md-4">
+                <nb-card style="height: 260px;">
+                    <nb-card-header class="text-center" style="font-size: larger;padding: 6px;">
+                        NEWS
+                    </nb-card-header>
+                    <nb-card-body style="font-size: small;">
+                        New York, the largest city in the U.S., is an architectural marvel with plenty of historic
+                        monuments, magnificent buildings and countless dazzling skyscrapers.
+                    </nb-card-body>
+                    <nb-card-footer class="text-center" style="font-size: medium;padding: 6px;">
+                        READ MORE
+                    </nb-card-footer>
+                </nb-card>
+            </div>
+
         </div>
     </nb-card-body>
 </nb-card>
+
+<nb-card>
+    <nb-card-header>
+        <div class="col-md-12 text-center" style="font-size: larger;">
+            RECENT EVENTS
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label class="label">Date</label>
+                    <input type="text" [(ngModel)]="Date" disabled nbInput fullWidth id="DName" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label class="label">Venue</label>
+                    <input type="text" [(ngModel)]="Venue" disabled nbInput fullWidth id="DName" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                    <label class="label">Leader</label>
+                    <input type="text" [(ngModel)]="Leader" disabled nbInput fullWidth id="DName" placeholder="Name">
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <div class="grid">
+                <img src="https://source.unsplash.com/600x400?1" alt="">
+                <img src="https://source.unsplash.com/600x400?2" alt="">
+                <img src="https://source.unsplash.com/600x400?3" alt="">
+                <img src="https://source.unsplash.com/600x400?4" alt="">
+                <img src="https://source.unsplash.com/600x400?5" alt="">
+                <img src="https://source.unsplash.com/600x400?6" alt="">
+                <img src="https://source.unsplash.com/600x400?7" alt="">
+                <img src="https://source.unsplash.com/600x400?8" alt="">
+                <img src="https://source.unsplash.com/600x400?9" alt="">
+                <img src="https://source.unsplash.com/600x400?10" alt="">
+                <img src="https://source.unsplash.com/600x400?11" alt="">
+                <img src="https://source.unsplash.com/600x400?12" alt="">
+              </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+

@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>ngx-admin Demo Application</title>
+  
+  <title>NEXT LEVEL</title>
 
   <base href="/">
 
@@ -15,6 +16,7 @@
   <!-- jQuery -->
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <!-- <script src="https://balkangraph.com/js/latest/OrgChart.js"></script> -->
+
 </head>
 
 <body>
@@ -110,7 +112,14 @@
     <div class="blob blob-4"></div>
     <div class="blob blob-5"></div>
   </div>
+  <script>
+    $(document).ready(function() {
+        function disableBack() { window.history.forward() }
 
+        window.onload = disableBack();
+        window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+    });
+</script>
 </body>
 
 </html>

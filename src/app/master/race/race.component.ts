@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../../Service/global.service';
 
 @Component({
   selector: 'ngx-race',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: GlobalService,
+  ) { }
 
   ngOnInit(): void {
+    this.service.Authentication();
   }
 
 }

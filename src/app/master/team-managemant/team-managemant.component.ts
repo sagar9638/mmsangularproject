@@ -32,6 +32,7 @@ export class TeamManagemantComponent implements OnInit {
     if (this.OneColumnLayout) {
       this.OneColumnLayout.headerDisplayFlag = false;
     }
+    this.service.Authentication();
 
     if (this.service) {
       let GetLoginRefId = this.service.GetSessionStorage("RefId");

@@ -1,7 +1,6 @@
 var chart;
 let argsOut;
 function myfunction(params1, Id) {
-    debugger
     var nodes = params1;
     chart = null;
     OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
@@ -68,7 +67,6 @@ function callHandler() {
 }
 
 function myfunction1(params1, Id) {
-    debugger
     var nodes = params1;
     chart = null;
     OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';

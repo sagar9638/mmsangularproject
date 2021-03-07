@@ -1,0 +1,7 @@
+::ng-deep .nb-theme-dark ng2-smart-table .ng2-smart-actions a.ng2-smart-action:not(:last-child){
+    color: green  !important;
+}
+
+::ng-deep .nb-theme-dark ng2-smart-table .ng2-smart-actions a.ng2-smart-action{
+    color: red  !important;
+}

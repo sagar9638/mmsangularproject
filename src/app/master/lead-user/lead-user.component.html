@@ -1,0 +1,11 @@
+<ngx-spinner></ngx-spinner>
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Leads
+    </nb-card-header>
+    <nb-card-body>
+        <ng2-smart-table [settings]="settings" allowFiltering='fales' [source]="source" (editConfirm)="onUpdateConfirm($event)"
+        (deleteConfirm)="onDeleteConfirm($event)" >
+        </ng2-smart-table>
+    </nb-card-body>
+</nb-card>

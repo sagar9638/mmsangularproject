@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from '../master/login/login.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DesignationMasterComponent } from './designation-master/designation-master.component';
 import { EventsComponent } from './events/events.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
+import { LeadUserComponent } from './lead-user/lead-user.component';
+import { MenuMasterComponent } from './menu-master/menu-master.component';
 import { NewsComponent } from './news/news.component';
 import { RaceComponent } from './race/race.component';
 import { RegisterComponent } from './register/register.component';
@@ -65,7 +68,18 @@ const routes: Routes = [
     path: 'MembersHierarchy',
     component: UserDetailComponent,
   },
-  
+  {
+    path: 'MenuMaster',
+    component: MenuMasterComponent,
+  },
+  {
+    path: 'DesignationMaster',
+    component: DesignationMasterComponent,
+  },
+  {
+    path: 'Leads',
+    component: LeadUserComponent,
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' },
 

@@ -32,35 +32,36 @@ export class AppComponent implements OnInit {
     private router: Router,
     private sidebarService: NbSidebarService,
     private layoutService: LayoutService,
-    
+
   ) {
-    
+
   }
 
   async ngOnInit(): Promise<void> {
     this.analytics.trackPageViews();
     this.seoService.trackCanonicalChanges();
 
-    let el: HTMLElement = this.myDiv.nativeElement;
-    el.click();
-    // if (this.service) {
-    //   let GetLoginFlag = this.service.GetSessionStorage("LoginFlg");
-    //   if (!!GetLoginFlag) {
-    //     if (GetLoginFlag == "true") {
-    //       this.router.navigate(['master/dashboard']);
-    //     }
-    //   }
-    //   else {
-    //     this.router.navigate(['master/login']);
-    //   }
-    // }
+    if (this.service) {
+      let GetLoginFlag = this.service.GetSessionStorage("LoginFlg");
+      if (!!GetLoginFlag) {
+        if (GetLoginFlag == "true") {
+          let GetCurrentUrl = window.location.href;
+          if (!GetCurrentUrl.includes('master/Register')) {
+            this.router.navigate(['master/Home']);
+          }
+        }
+      }
+      else {
+        this.router.navigate(['master/login']);
+      }
+    }
   }
 
-  
+
   toggleSidebar(): boolean {
     this.sidebarService.toggle(false, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
     return false;
   }
- 
+
 }

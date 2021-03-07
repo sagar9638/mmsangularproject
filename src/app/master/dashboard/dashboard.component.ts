@@ -36,9 +36,13 @@ export class DashboardComponent implements OnInit {
     if (this.OneColumnLayout) {
       this.OneColumnLayout.headerDisplayFlag = true;
     }
-
+    let objBody = [
+      {
+        p_Condition: ''
+      }
+    ]
     this.ArrayBestLeaderData = [];
-    let res = await this.service.GetDataAPIS('GetUser', 'Get', {});
+    let res = await this.service.GetDataAPIS('GetUser', 'Post', objBody);
     if (!!res) {
       for (let index = 0; index < 3; index++) {
         this.ArrayBestLeaderData.push(res[index]);

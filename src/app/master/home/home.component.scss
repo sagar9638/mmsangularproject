@@ -230,3 +230,259 @@
     }
   }
   
+
+  /******************************************************************************************************************/
+
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+
+section {
+  display: grid;
+  grid-gap: 0;
+  //grid-template-columns: 1fr 1fr;
+  //grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "main main"
+    "event event";
+  background-image: url(https://s3.ca-central-1.amazonaws.com/image-web-frankie/Music+show.jpg);
+  background-size: cover;
+  background-position: center;
+  //min-height: 100vh;
+}
+
+@media (min-width: 1200px) {
+  section {
+    grid-template-areas:
+      "main event"
+      "main event";
+  }
+}
+
+section .events {
+ // grid-area: event;
+ // background-color: rgba(0, 0, 0, 0.5);
+ // box-sizing: border-box;
+}
+
+section .events ul {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+}
+
+section .events ul li {
+  background-color: #fff;
+  box-sizing: border-box;
+  display: grid;
+  //grid-template-columns: 30% 1fr;
+  //grid-template-rows: 1fr;
+  grid-gap: 0;
+  grid-template-areas:
+    "time time"
+    "detail detail";
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  section .events ul li {
+    grid-template-areas:
+      "time detail"
+      "time detail";
+  }
+}
+
+section .events ul li .time {
+  grid-area: time;
+  position: relative;
+  padding: 8% 40%;
+  background-color: #161a30;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: 0.5s;
+}
+
+// section .events ul li:hover .time {
+//   background-color: #222b45;
+// }
+
+section .events ul li .time h2 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 60px;
+  line-height: 30px;
+}
+
+section .events ul li .time h2 span {
+  font-size: 30px;
+}
+
+section .events ul li .details {
+  grid-area: detail;
+  padding: 20px 20px 32px;
+  background-color: #fff;
+  color: #161a30;
+  box-sizing: border-box;
+}
+
+section .events ul li .details h3 {
+  margin: 0;
+  padding: 0;
+  color: #161a30;
+  font-size: 22px;
+}
+
+section .events ul li .details p {
+  margin: 10px 0 0;
+  padding: 0;
+  color: #161a30;
+  font-size: 16px;
+}
+
+section .events ul li .details a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 2px solid #262626;
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+section .events ul li .details a:hover {
+  background-color: #222b45;
+  color: #fff;
+  border-color: #fff;
+}
+
+
+/****************************************************************************************************************************/
+
+// body {
+//   font-family: tahoma;
+//   height: 100vh;
+//   background-image: url(https://picsum.photos/g/3000/2000);
+//   background-size: cover;
+//   background-position: center;
+//   display: flex;
+//   align-items: center;
+// }
+
+.our-team {
+  padding: 6px 0 0px;
+  margin-bottom: 15px;
+  background-color: transparent;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  //box-shadow: inset 0px 10px 20px #fffefe4f;
+}
+
+.our-team .picture {
+  display: inline-block;
+  //height: 130px;
+  width: 130px;
+  margin-bottom: 8px;
+  z-index: 1;
+  position: relative;
+}
+
+.our-team .picture::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  background-color: #161a30;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 0.9;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+
+.our-team:hover .picture::before {
+  height: 100%;
+}
+
+.our-team .picture::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #161a30;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.our-team .picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+.our-team:hover .picture img {
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+}
+
+.our-team .title {
+  display: block;
+  font-size: 15px;
+  color: #4e5052;
+  text-transform: capitalize;
+}
+
+.our-team .social {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #161a30;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .social {
+  bottom: 0;
+}
+
+.our-team .social li {
+  display: inline-block;
+}
+
+.our-team .social li a {
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: white;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+
+.our-team .social li a:hover {
+  color: #161a30;
+  background-color: #f7f5ec;
+}
+
+
+/***********************************************************************************************************/
+img {
+  max-width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}

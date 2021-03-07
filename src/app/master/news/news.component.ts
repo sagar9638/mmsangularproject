@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from '../../Service/global.service';
 
 @Component({
   selector: 'ngx-news',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: GlobalService,
+  ) { }
 
   ngOnInit(): void {
+    this.service.Authentication();
   }
 
 }

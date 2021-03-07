@@ -48,6 +48,7 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
     if (this.OneColumnLayout) {
       this.OneColumnLayout.headerDisplayFlag = false;
     }
+    this.service.Authentication();
 
     if (this.service) {
       let GetLoginRefId = this.service.GetSessionStorage("RefId");
@@ -91,8 +92,6 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
   }
 
   async toggle(e) {
-    debugger
-
     let get = callHandler()
     console.log('get', get);
 

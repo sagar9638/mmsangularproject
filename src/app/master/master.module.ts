@@ -27,6 +27,7 @@ import {
   NbPopoverModule, 
   NbTooltipModule, 
   NbWindowModule,
+  NbTreeGridModule,
 } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -38,13 +39,19 @@ import { TeamManagemantComponent } from './team-managemant/team-managemant.compo
 import { NewsComponent } from './news/news.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MenuMasterComponent } from './menu-master/menu-master.component';
+import { DesignationMasterComponent } from './designation-master/designation-master.component';
+import { LeadUserComponent } from './lead-user/lead-user.component';
+import { TablesRoutingModule } from '../pages/tables/tables-routing.module';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { DesignationDetailComponent } from './designation-detail/designation-detail.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
     DashboardComponent,
     LoginComponent,
-    UserMasterComponent, UserDetailComponent, HomeComponent, RaceComponent, EventsComponent, TeamManagemantComponent, NewsComponent, GalleryComponent, UserProfileComponent],
+    UserMasterComponent, UserDetailComponent, HomeComponent, RaceComponent, EventsComponent, TeamManagemantComponent, NewsComponent, GalleryComponent, UserProfileComponent, MenuMasterComponent, DesignationMasterComponent, LeadUserComponent, DesignationDetailComponent],
   imports: [
     CommonModule,
     MasterRoutingModule,
@@ -67,7 +74,11 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NbPopoverModule,
     NbTooltipModule,
     NbWindowModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+
+    NbTreeGridModule,
+    TablesRoutingModule,
+    Ng2SmartTableModule,
   ],
   providers: [
     GlobalService,

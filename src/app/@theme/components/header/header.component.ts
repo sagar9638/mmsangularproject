@@ -120,6 +120,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (menuName == "Log out") {
       this.service.ClearSessionStorage();
       this.router.navigate(['master/login']);
+      window.location.reload();
     }
     else if(menuName == "User Profile")
     {

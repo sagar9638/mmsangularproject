@@ -1,0 +1,78 @@
+<ngx-spinner></ngx-spinner>
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Menu Master
+    </nb-card-header>
+    <nb-card-body>
+        <div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Menu Name</label>
+                        <input type="text" [(ngModel)]="MenuName" nbInput fullWidth id="MenuName" placeholder="Menu Name">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Menu Title</label>
+                        <input type="text" [(ngModel)]="MenuTitle" nbInput fullWidth id="MenuTitle" placeholder="Menu Title">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Menu Path</label>
+                        <input type="text" [(ngModel)]="MenuPath" nbInput fullWidth id="MenuPath" placeholder="Menu Path">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Menu Icon</label>
+                        <input type="text" [(ngModel)]="MenuIcon"  nbInput fullWidth id="MenuIcon" placeholder="Menu Icon">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Remark</label>
+                        <input type="text" [(ngModel)]="Remark" nbInput fullWidth id="Remark" placeholder="Remark">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">IsActive</label>
+                        <input type="text" [(ngModel)]="IsActive" nbInput fullWidth id="IsActive" placeholder="IsActive">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <button type="submit" fullWidth nbButton outline (click)="SaveData()"
+                                status="success">Add</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" fullWidth nbButton outline (click)="Cancle()"
+                                status="danger">Cancle</button>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+
+
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+<nb-card>
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="onUpdateConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>

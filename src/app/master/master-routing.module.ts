@@ -4,10 +4,12 @@ import { LoginComponent } from '../master/login/login.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DesignationMasterComponent } from './designation-master/designation-master.component';
 import { EventsComponent } from './events/events.component';
+import { GalleryMasterComponent } from './gallery-master/gallery-master.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
 import { LeadUserComponent } from './lead-user/lead-user.component';
 import { MenuMasterComponent } from './menu-master/menu-master.component';
+import { MenuRightsMasterComponent } from './menu-rights-master/menu-rights-master.component';
 import { NewsComponent } from './news/news.component';
 import { RaceComponent } from './race/race.component';
 import { RegisterComponent } from './register/register.component';
@@ -80,6 +82,15 @@ const routes: Routes = [
     path: 'Leads',
     component: LeadUserComponent,
   },
+  {
+    path: 'MenuRightsMaster',
+    component: MenuRightsMasterComponent,
+  },
+  {
+    path: 'GalleryMaster',
+    component: GalleryMasterComponent,
+  },
+  
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' },
 

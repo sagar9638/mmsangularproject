@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
           this.service.SetSessionStorage("UserName", res.recordset[0].UserName);
           this.service.SetSessionStorage("UserId", res.recordset[0].Id);
           this.service.SetSessionStorage("RefId", res.recordset[0].RefId);
+          this.service.SetSessionStorage("DId", res.recordset[0].DId);
           this.service.SetSessionStorage("LoginFlg", true);
           this.ClearData();
           this.OneColumnLayout.headerDisplayFlag = true;

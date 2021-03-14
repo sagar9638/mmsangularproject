@@ -115,6 +115,7 @@ export class GlobalService {
     { keyName: "RefId", keyValue: "" },
     { keyName: "UserName", keyValue: "" },
     { keyName: "UserId", keyValue: "" },
+    { keyName: "DId", keyValue: "" },
   ];
 
   _arrLocalStorage = [

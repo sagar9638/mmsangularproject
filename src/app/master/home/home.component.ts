@@ -1,7 +1,9 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { OneColumnLayoutComponent } from '../../@theme/layouts/one-column/one-column.layout';
+import { AppComponent } from '../../app.component';
 import { GlobalService } from '../../Service/global.service';
 declare function myfunction(params1, params2): any;
 declare function myfunction1(params1, params2): any;
@@ -17,7 +19,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private service: GlobalService,
     private router: Router,
-    private OneColumnLayout: OneColumnLayoutComponent
+    private OneColumnLayout: OneColumnLayoutComponent,
+    private App: AppComponent,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ArrayBestLeaderData = [];
@@ -29,6 +33,7 @@ export class HomeComponent implements OnInit {
   Date: any;
 
   async ngOnInit(): Promise<void> {
+    this.spinner.show();
     if (this.OneColumnLayout) {
       this.OneColumnLayout.headerDisplayFlag = true;
     }
@@ -36,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.Leader = "Dinesh VP";
     this.Date = formatDate(this.today, 'dd-MM-yyyy', 'en-US', '+0530');
     this.service.Authentication();
+    await  this.App.ngOnInit();
     this.ArrayBestLeaderData = [];
     let objBody = [
       {
@@ -50,6 +56,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.service.AlertSuccess('error', "No Data Found..!!");
     }
+    this.spinner.hide();
   }
 
   openNewWindow() {

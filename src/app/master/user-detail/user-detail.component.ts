@@ -66,7 +66,6 @@ export class UserDetailComponent implements OnInit, AfterViewInit {
             if (res.recordset.length != 0) {
               let _tempNodes = [];
               this.nodes = await res.recordset;
-              console.log('this.nodes', this.nodes)
               this.nodes.forEach(element => {
                 if (element.id == parseInt(GetLoginUserId)) {
                   delete element.pid;

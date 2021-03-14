@@ -52,6 +52,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: 'master/Leads',
   },
   {
+    title: 'Gallery Master',
+    icon: 'layout-outline',
+    link: 'master/GalleryMaster',
+  },
+
+  {
     title: 'User Details',
     icon: 'layout-outline',
     link: 'master/userDetail',

@@ -5,7 +5,7 @@
  */
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NbSidebarService } from '@nebular/theme';
+import { NbMenuItem, NbSidebarService } from '@nebular/theme';
 import { from } from 'rxjs';
 import { LayoutService } from './@core/utils';
 import { AnalyticsService } from './@core/utils/analytics.service';
@@ -24,7 +24,8 @@ import { GlobalService } from './Service/global.service';
 })
 export class AppComponent implements OnInit {
   @ViewChild('myDiv') myDiv: ElementRef;
-  menu = MENU_ITEMS;
+  menu : NbMenuItem[] = [];
+ 
   constructor(
     private analytics: AnalyticsService,
     private seoService: SeoService,
@@ -40,7 +41,6 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.analytics.trackPageViews();
     this.seoService.trackCanonicalChanges();
-
     if (this.service) {
       let GetLoginFlag = this.service.GetSessionStorage("LoginFlg");
       if (!!GetLoginFlag) {
@@ -50,13 +50,55 @@ export class AppComponent implements OnInit {
             this.router.navigate(['master/Home']);
           }
         }
+       await  this.GetMenuRightsData();
       }
       else {
         this.router.navigate(['master/login']);
       }
     }
+
+
   }
 
+  async GetMenuRightsData() {
+    if (this.service) {
+      let GetLoginRefId = this.service.GetSessionStorage("RefId");
+      if (GetLoginRefId != null && GetLoginRefId != "" && GetLoginRefId != undefined) {
+        let GetDId = this.service.GetSessionStorage("DId").replace(/["']/g, "");
+        let GetVal = [];
+        let obj = {
+          p_Condition: " AND MR.DId = " + GetDId
+        }
+        GetVal.push(obj);
+
+        let res = await this.service.GetDataAPIS('GetMenuRightsData', 'Post', GetVal);
+        if (res != null && res != undefined && res != "") {
+          if (res.length != 0) {
+            let ArrayMenuRightsData = [];
+            //ArrayMenuRightsData = await res;
+            if(res.length != 0)
+            {
+            await  res.forEach(element => {
+                let obj = {
+                  title: element.MName,
+                  icon: 'layout-outline',
+                  link: element.MPath,
+                }
+                ArrayMenuRightsData.push(obj);
+              });
+
+              this.menu = await ArrayMenuRightsData;
+              this.menu = [...this.menu];
+            }
+          }
+        }
+
+      } else {
+        this.service.AlertSuccess('info', 'Please first join our team..!!')
+      }
+    }
+
+  }
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(false, 'menu-sidebar');

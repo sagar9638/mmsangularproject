@@ -9,23 +9,23 @@ import { UserMasterComponent } from './Report/user-master/user-master.component'
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { GlobalService } from '../Service/global.service';
 import { HttpModule } from '@angular/http';
-import { 
-  NbActionsModule, 
-  NbButtonModule, 
-  NbCardModule, 
-  NbCheckboxModule, 
-  NbDatepickerModule, 
-  NbIconModule, 
-  NbInputModule, 
-  NbRadioModule, 
-  NbSelectModule, 
-  NbUserModule, 
-  NbMenuModule, 
-  NbTabsetModule, 
-  NbListModule, 
-  NbDialogModule, 
-  NbPopoverModule, 
-  NbTooltipModule, 
+import {
+  NbActionsModule,
+  NbButtonModule,
+  NbCardModule,
+  NbCheckboxModule,
+  NbDatepickerModule,
+  NbIconModule,
+  NbInputModule,
+  NbRadioModule,
+  NbSelectModule,
+  NbUserModule,
+  NbMenuModule,
+  NbTabsetModule,
+  NbListModule,
+  NbDialogModule,
+  NbPopoverModule,
+  NbTooltipModule,
   NbWindowModule,
   NbTreeGridModule,
 } from '@nebular/theme';
@@ -45,13 +45,20 @@ import { LeadUserComponent } from './lead-user/lead-user.component';
 import { TablesRoutingModule } from '../pages/tables/tables-routing.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DesignationDetailComponent } from './designation-detail/designation-detail.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { GalleryMasterComponent } from './gallery-master/gallery-master.component';
+import { MenuRightsMasterComponent } from './menu-rights-master/menu-rights-master.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
     DashboardComponent,
     LoginComponent,
-    UserMasterComponent, UserDetailComponent, HomeComponent, RaceComponent, EventsComponent, TeamManagemantComponent, NewsComponent, GalleryComponent, UserProfileComponent, MenuMasterComponent, DesignationMasterComponent, LeadUserComponent, DesignationDetailComponent],
+    UserMasterComponent, UserDetailComponent, HomeComponent, RaceComponent, EventsComponent, TeamManagemantComponent, NewsComponent, GalleryComponent, UserProfileComponent, MenuMasterComponent, DesignationMasterComponent, LeadUserComponent, DesignationDetailComponent
+    , GalleryMasterComponent
+    , MenuRightsMasterComponent
+  ],
   imports: [
     CommonModule,
     MasterRoutingModule,
@@ -79,6 +86,17 @@ import { DesignationDetailComponent } from './designation-detail/designation-det
     NbTreeGridModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
+
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyCm_z7lliZ6MmnK5jUadlLFYMXeaol4pPU",
+      authDomain: "webmmstemp.firebaseapp.com",
+      projectId: "webmmstemp",
+      storageBucket: "webmmstemp.appspot.com",
+      messagingSenderId: "831347352282",
+      appId: "1:831347352282:web:8f3720c02fad2754627be3",
+      measurementId: "G-MEDXHSQ72W"
+    }),
+    AngularFireStorageModule
   ],
   providers: [
     GlobalService,

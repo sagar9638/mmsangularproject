@@ -1,3 +1,5 @@
+<ngx-spinner></ngx-spinner>
+
 <div class="row">
     <div class="col-md-6">
         <nb-card>
@@ -12,11 +14,11 @@
                         <div class="card col-md-12">
                             <div class="firstinfo"><img src="https://i.ibb.co/P97BxG9/person-1.png" />
                                 <div class=" profileinfo">
-                                    <h1>Hari</h1>
-                                    <div>Manager</div>
-                                    <div>Hari@gmail.com</div>
-                                    <div>9678451285</div>
-                                    <span>Surat</span>
+                                    <h1>{{UserName}}</h1>
+                                    <div>{{DName}}</div>
+                                    <div>{{MailId}}</div>
+                                    <div>{{MobileNo}}</div>
+                                    <span>{{City}}</span>
                                 </div>
                             </div>
                         </div>
@@ -39,11 +41,11 @@
                         <div class="card col-md-12">
                             <div class="firstinfo"><img src="https://i.ibb.co/P97BxG9/person-1.png" />
                                 <div class=" profileinfo">
-                                    <h1>Sagar</h1>
-                                    <div>CEO</div>
-                                    <div>Sagar@gmail.com</div>
-                                    <div>9658457812</div>
-                                    <span>Surat</span>
+                                    <h1>{{PUserName}}</h1>
+                                    <div>{{PDName}}</div>
+                                    <div>{{PMailId}}</div>
+                                    <div>{{PMobileNo}}</div>
+                                    <span>{{PCity}}</span>
                                 </div>
                             </div>
                         </div>
@@ -122,20 +124,25 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="single-process first text-center">
-                                <i class="fas fa-search"></i>
-                                <h4>UpComing Position</h4>
+                                <i class="fas fa-award" ></i>
+                                
+                                <h5>UpComing Position</h5>
+                                <h3>{{NDesignationName}}</h3>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="single-process secend text-center">
-                                <i class="fas fa-cog"></i>
-                                <h4>Current Position</h4>
+                                <i class="fas fa-gem"></i>
+                                
+                                <h5 style="color: #222b45;" >Current Position</h5>
+                                <h3 style="color: #222b45;" >{{CDesignationName}}</h3>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="single-process thard text-center">
                                 <i class="fas fa-globe"></i>
-                                <h4>Privious Position</h4>
+                                <h5>Previous Position</h5>
+                                <h3>{{PDesignationName}}</h3>
                             </div>
                         </div>
                     </div>

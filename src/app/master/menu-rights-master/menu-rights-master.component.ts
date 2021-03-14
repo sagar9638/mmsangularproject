@@ -4,11 +4,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobalService } from '../../Service/global.service';
 
 @Component({
-  selector: 'ngx-designation-master',
-  templateUrl: './designation-master.component.html',
-  styleUrls: ['./designation-master.component.scss']
+  selector: 'ngx-menu-rights-master',
+  templateUrl: './menu-rights-master.component.html',
+  styleUrls: ['./menu-rights-master.component.scss']
 })
-export class DesignationMasterComponent implements OnInit {
+export class MenuRightsMasterComponent implements OnInit {
 
   constructor(
     private service: GlobalService,
@@ -17,11 +17,8 @@ export class DesignationMasterComponent implements OnInit {
 
   checkValidation: boolean = false;
 
-  DName: any;
-  DShortName: any;
-  DAchiveCount: any;
-  Remark: any;
-  IsActive: any;
+  DId: any;
+  MId: any;
 
   settings = {
     actions: {
@@ -43,54 +40,46 @@ export class DesignationMasterComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
+      Id: {
+        title: 'Id',
+        type: 'int',
+        show: true,
+        editable: false
+      },
       DId: {
         title: 'Designation Id',
         type: 'int',
         show: true,
         editable: false
+
       },
-      DName: {
-        title: 'Name',
-        type: 'string',
+      MId: {
+        title: 'Menu Id',
+        type: 'int',
+        show: true,
+        editable: false
+
       },
-      DShortName: {
-        title: 'Short Name',
-        type: 'string',
-      },
-      DAchiveCount: {
-        title: 'Achive Count',
-        type: 'string',
-      },
-      Remark: {
-        title: 'Remark',
-        type: 'string',
-      },
-      IsActive: {
-        title: 'IsActive',
-        type: 'string',
-      },
-      EntDate: {
-        title: 'Date',
-        type: 'date',
-      },
+     
     }
   };
 
   source: LocalDataSource = new LocalDataSource();
 
+
   ngOnInit(): void {
     this.service.Authentication();
-    this.GetDesignationMasterData("");
+    this.GetMenuRightsMasterData("");
   }
 
-  async GetDesignationMasterData(Condition) {
+  async GetMenuRightsMasterData(Condition) {
     let objBody = [
       {
         p_Condition: Condition
       }
     ]
 
-    let res = await this.service.GetDataAPIS('GetDesignationData', 'Post', objBody);
+    let res = await this.service.GetDataAPIS('GetMenuRightsMasterData', 'Post', objBody);
     if (!!res) {
       if (res.length > 0) {
         this.source.load(res);
@@ -105,7 +94,8 @@ export class DesignationMasterComponent implements OnInit {
   async SaveData() {
     let obj1 = {
       required: [
-        { FieldValue: this.DName, FieldTitle: "Name" }
+        { FieldValue: this.DId, FieldTitle: "DId" },
+        { FieldValue: this.MId, FieldTitle: "MId" }
       ]
     }
 
@@ -125,11 +115,8 @@ export class DesignationMasterComponent implements OnInit {
     }
     let GetVal = [];
     let obj = {
-      p_DName: this.DName,
-      p_DShortName: this.DShortName,
-      p_DAchiveCount: this.DAchiveCount,
-      p_Remark: this.Remark,
-      p_IsActive: this.IsActive,
+      p_DId: this.DId,
+      p_MId: this.MId,
       p_EntUser: GetUserName
     }
 
@@ -140,12 +127,12 @@ export class DesignationMasterComponent implements OnInit {
     }
     GetVal.push(obj);
 
-    let res = await this.service.GetDataAPIS('AddDesignationData', 'Post', GetVal);
+    let res = await this.service.GetDataAPIS('AddMenuRightsMaster', 'Post', GetVal);
     if (res != null && res != undefined && res != "") {
       if (res.flag == true) {
         this.service.AlertSuccess('success', res.mesg);
         this.ClearData();
-        await this.GetDesignationMasterData("");
+        await this.GetMenuRightsMasterData("");
         this.spinner.hide();
       }
       else {
@@ -155,22 +142,13 @@ export class DesignationMasterComponent implements OnInit {
     }
   }
 
+
   onUpdateConfirm(event): void {
 
     this.service.AlertConfirm('Are you sure?', "You won't be Update this!", "Yes, Update it!").then(async (Resualt) => {
       if (Resualt.isConfirmed) {
 
         let reqObj = event.newData;
-        let obj1 = {
-          required: [
-            { FieldValue: reqObj.DName, FieldTitle: "Name" }
-          ]
-        }
-
-        this.checkValidation = await this.service.CheckValidation(obj1);
-        if (this.checkValidation == false) {
-          return
-        }
 
         this.spinner.show();
 
@@ -183,12 +161,9 @@ export class DesignationMasterComponent implements OnInit {
         }
         let GetVal = [];
         let obj = {
-          p_DId: reqObj.DId,
-          p_DName: reqObj.DName,
-          p_DShortName: reqObj.DShortName,
-          p_DAchiveCount: reqObj.DAchiveCount,
-          p_Remark: reqObj.Remark,
-          p_IsActive: reqObj.IsActive,
+          p_Id: reqObj.DId,
+          p_DId: reqObj.DName,
+          p_MId: reqObj.DShortName,
           p_UpdUser: GetUserName
         }
 
@@ -199,11 +174,11 @@ export class DesignationMasterComponent implements OnInit {
         }
         GetVal.push(obj);
 
-        let res = await this.service.GetDataAPIS('UpdDesignationData', 'Post', GetVal);
+        let res = await this.service.GetDataAPIS('UpdMenuRightsMaster', 'Post', GetVal);
         if (res != null && res != undefined && res != "") {
           if (res.flag == true) {
             this.service.AlertSuccess('success', res.mesg);
-            await this.GetDesignationMasterData("");
+            await this.GetMenuRightsMasterData("");
             this.spinner.hide();
           }
           else {
@@ -223,7 +198,7 @@ export class DesignationMasterComponent implements OnInit {
 
         let GetVal = [];
         let obj = {
-          p_DId: reqObj.DId,
+          p_Id: reqObj.Id,
         }
 
         for (var i in obj) {
@@ -233,11 +208,11 @@ export class DesignationMasterComponent implements OnInit {
         }
         GetVal.push(obj);
 
-        let res = await this.service.GetDataAPIS('DeleteDesignationData', 'Post', GetVal);
+        let res = await this.service.GetDataAPIS('DeleteMenuRightsMaster', 'Post', GetVal);
         if (res != null && res != undefined && res != "") {
           if (res.flag == true) {
             this.service.AlertSuccess('success', res.mesg);
-            await this.GetDesignationMasterData("");
+            await this.GetMenuRightsMasterData("");
             this.spinner.hide();
           }
           else {
@@ -250,11 +225,8 @@ export class DesignationMasterComponent implements OnInit {
   }
 
   ClearData() {
-    this.DName = null;
-    this.DShortName = null;
-    this.DAchiveCount = null;
-    this.Remark = null;
-    this.IsActive = null;
+    this.DId = null;
+    this.MId = null;
   }
 
   Cancle() {

@@ -122,7 +122,7 @@ export class TeamManagemantComponent implements OnInit {
   }
 
   Back() {
-    this.router.navigate(['master/dashboard']);
+    this.router.navigate(['master/Home']);
   }
 
 }

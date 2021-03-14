@@ -45,12 +45,12 @@ export class MenuMasterComponent implements OnInit {
       confirmDelete: true,
     },
     columns: {
-      // MId: {
-      //   title: 'Menu Id',
-      //   type: 'int',
-      //   show: true,
-      //   editable: false
-      // },
+      MId: {
+        title: 'Menu Id',
+        type: 'int',
+        show: true,
+        editable: false
+      },
       MTitle: {
         title: 'Menu Title',
         type: 'string',

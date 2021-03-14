@@ -1,0 +1,39 @@
+<ngx-spinner></ngx-spinner>
+
+
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Gallary Master
+    </nb-card-header>
+    <nb-card-body>
+        <div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label class="label">Image Upload</label>
+                        <input type="file" [(ngModel)]="ImageUpload" nbInput fullWidth (change)="upload($event)"
+                            accept="*.png.jpg" id="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="label">&nbsp;</label>
+                        <button type="submit" fullWidth nbButton outline (click)="AddImage()"
+                            status="success">Add</button>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <nb-card-body>
+        <div id="gallery" class="container-fluid">
+            <div *ngFor="let item of ArrayGallaryData">
+                <img src="{{item.Path}}" (click)="DeleteData(item.Id)" class="card img-responsive">
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

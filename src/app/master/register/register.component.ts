@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OneColumnLayoutComponent } from '../../@theme/layouts';
 import { GlobalService } from '../../Service/global.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-register',
@@ -36,7 +37,6 @@ export class RegisterComponent implements OnInit {
     if (this.OneColumnLayout) {
       this.OneColumnLayout.headerDisplayFlag = false;
     }
-
     // if (this.service) {
     //   let GetLoginFlag = this.service.GetSessionStorage("LoginFlg");
     //   if (!!GetLoginFlag) {
@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
     //     }
     //   }
     // }
+
 
     this.service.validation();
   }
@@ -78,12 +79,23 @@ export class RegisterComponent implements OnInit {
     this.spinner.show();
 
     let GetValidUserNameCheck = await this.ValidUserNameCheck();
-    if(!GetValidUserNameCheck)
-    {
+    if (!GetValidUserNameCheck) {
       return
     }
-    let GetRefId = this.route.snapshot.paramMap.get("RefId")
 
+    const url = window.location.href;
+    let paramValue;
+    if (url.includes('?')) {
+      const httpParams = new HttpParams({ fromString: url.split('?')[1] });
+      paramValue = this.service.decryptUsingAES256(httpParams.get("RefId"));
+      if (paramValue) {
+        if (paramValue != "" && paramValue != null && paramValue != undefined) {
+          paramValue = paramValue.replace(/["']/g, "");
+        }
+      }
+    }
+
+    let GetRefId = paramValue;//this.route.snapshot.paramMap.get("RefId")
     if (GetRefId != null && GetRefId != "" && GetRefId != undefined) {
       GetRefId = GetRefId
     } else {

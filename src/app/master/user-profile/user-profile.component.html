@@ -1,6 +1,57 @@
 <ngx-spinner></ngx-spinner>
 
-<div class="row">
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        User Profile
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="up-events">
+                    <p>User</p>
+                    <div>
+                        <div class="col-md-12">
+                            <div class="content">
+                                <div class="card col-md-12">
+                                    <div class="firstinfo"><img [src]="UserProfileUrl" />
+                                        <div class=" profileinfo">
+                                            <h1>{{UserName}}</h1>
+                                            <div>{{DName}}</div>
+                                            <div>{{MailId}}</div>
+                                            <div>{{MobileNo}}</div>
+                                            <span>{{City}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="up-events">
+                    <p style="margin:0px;" >Leader</p>
+                    <div class="firstinfo"><img [src]="PUserProfileUrl" style="height: 120px;width: 120px;margin-top: 10px;" />
+                        <div class=" profileinfo" style="font-size: small;">
+                            <h1 style="margin-bottom: 2px;">{{PUserName}}</h1>
+                            <div>{{PDName}}</div>
+                            <div>{{PMailId}}</div>
+                            <div>{{PMobileNo}}</div>
+                            <span>{{PCity}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" fullWidth nbButton outline shape="round" status="primary" (click)="UserEditProfilePopupOpen()" >
+                        <i class="fa fa-edit" style="font-size:16px"> Edit Profile </i>  </button>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+
+<!-- <div class="row">
     <div class="col-md-6">
         <nb-card>
             <nb-card-header>
@@ -55,7 +106,7 @@
         </nb-card>
     </div>
 
-</div>
+</div> -->
 
 <!-- <nb-card>
     <nb-card-header>
@@ -104,10 +155,10 @@
     </nb-card-body>
 </nb-card> -->
 
-<nb-card style="margin-bottom: 5px;margin-top: 2px;border: 2px solid #e5ecee">
+<nb-card style="margin-bottom: 5px;margin-top: 2px;border: 2px solid #e5ecee" *ngIf="UrlDisplayFlag" >
     <nb-card-header style="padding: 5px;">
         <div class="text-center" style="font-size: larger;">
-            <a title="welcome joining our team" (click)="openNewWindow(true)">
+            <a title="welcome joining our team"  (click)="openNewWindow(true)">
                 {{UserUrl}}
             </a>
         </div>
@@ -124,8 +175,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="single-process first text-center">
-                                <i class="fas fa-award" ></i>
-                                
+                                <i class="fas fa-award"></i>
+
                                 <h5>UpComing Position</h5>
                                 <h3>{{NDesignationName}}</h3>
                             </div>
@@ -133,9 +184,9 @@
                         <div class="col-md-4">
                             <div class="single-process secend text-center">
                                 <i class="fas fa-gem"></i>
-                                
-                                <h5 style="color: #222b45;" >Current Position</h5>
-                                <h3 style="color: #222b45;" >{{CDesignationName}}</h3>
+
+                                <h5 style="color: #222b45;">Current Position</h5>
+                                <h3 style="color: #222b45;">{{CDesignationName}}</h3>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -192,15 +243,18 @@
                     </nb-card-header>
                     <nb-card-body style="overflow-y: hidden;">
                         <div class="form-group">
-                            <button type="submit" fullWidth nbButton outline shape="round" status="primary">This
+                            <button type="submit" fullWidth nbButton outline (click)="LeadUserDetail('ThisMonth')"
+                                shape="round" status="primary">This
                                 Month</button>
                         </div>
                         <div class="form-group">
-                            <button type="submit" fullWidth nbButton outline shape="round" status="success">Previous
+                            <button type="submit" fullWidth nbButton outline shape="round"
+                                (click)="LeadUserDetail('PreviousMonth')" status="success">Previous
                                 Month</button>
                         </div>
                         <div class="form-group">
-                            <button type="submit" fullWidth nbButton outline shape="round" status="warning">Till
+                            <button type="submit" fullWidth nbButton outline shape="round"
+                                (click)="LeadUserDetail('TillNow')" status="warning">Till
                                 Now</button>
                         </div>
                     </nb-card-body>
@@ -223,7 +277,7 @@
                         Sell For Next Position
                         <span style="font-size: larger;
                         font-weight: bolder;
-                        color: #f02248;">{{NextPosition}}</span>
+                        color: #f02248;">{{NDesignationName}}</span>
 
 
                     </nb-card-body>

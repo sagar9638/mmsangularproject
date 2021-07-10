@@ -1,8 +1,35 @@
 var chart;
 let argsOut;
+
+var editForm = function () {
+    this.nodeId = null;
+};
+
+editForm.prototype.init = function (obj) {
+    var that = this;
+    this.obj = obj;
+    this.editForm = document.getElementById("editForm");
+    this.nameInput = document.getElementById("name");
+    this.titleInput = document.getElementById("title");
+    this.cancelButton = document.getElementById("cancel");
+    this.saveButton = document.getElementById("save");
+};
+
+editForm.prototype.show = function (nodeId) {
+        this.hide();
+    this.nodeId = nodeId;
+    var left = document.body.offsetWidth / 2 - 150;
+     var node = chart.get(nodeId);
+};
+
+editForm.prototype.hide = function (showldUpdateTheNode) {
+};
+
+
 function myfunction(params1, Id) {
     var nodes = params1;
     chart = null;
+
     OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
 
     chart = new OrgChart(document.getElementById(Id), {
@@ -16,11 +43,21 @@ function myfunction(params1, Id) {
         //     svg: { text: "Export SVG" },
         //     csv: { text: "Export CSV" }
         // },
-        nodeMenu: {
+        // nodeMenu: {
+        //     call: {
+        //         onClick: callHandler
+        //     }
+            
+        // },
+        nodeMenu:{
+            edit: {text:"Edit"},
             call: {
-                onClick: callHandler
+                onClick: callHandler,
+                doubleClick: callHandler
             }
+          
         },
+        editUI: new editForm(),
         nodeBinding: {
             field_0: "name",
             field_1: "title",
@@ -82,11 +119,15 @@ function myfunction1(params1, Id) {
         //     svg: { text: "Export SVG" },
         //     csv: { text: "Export CSV" }
         // },
-        nodeMenu: {
+        nodeMenu:{
+            edit: {text:"Edit"},
             call: {
-                onClick: callHandler
+                doubleClick: callHandler
+                //mouseDragLeave: callHandler
             }
+          
         },
+        editUI: new editForm(),
         nodeBinding: {
             field_0: "name",
             field_1: "title",
@@ -122,4 +163,7 @@ function myfunction1(params1, Id) {
 
     chart.load(nodes);
 }
+
+
+
 

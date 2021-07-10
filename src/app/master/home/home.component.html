@@ -12,14 +12,18 @@
 
 <!-- Main Video -->
 <ngx-spinner></ngx-spinner>
-    <nb-card>
-        <div class="row">
-            <div class="col-md-12 text-center" style="padding: 0px;">
-                <iframe class="col-md-12 " style="border: 2px;" height="520" width="100"
-                    src="../../../assets/Video/Finale fix audio.mp4"></iframe>
-            </div>
-        </div>
-    </nb-card>
+<nb-card>
+    <div class="row">
+        <!-- <div class="col-md-12 text-center responsive-iframe" style="padding: 0px;">
+            <iframe class="col-md-12 " style="border: 2px;" src="../../../assets/Video/Finale fix audio.mp4"></iframe>
+        </div> -->
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="../../../assets/Video/Finale fix audio.mp4" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          </div>
+    </div>
+</nb-card>
 
 <!-- End Main Video -->
 
@@ -40,12 +44,11 @@
                     <ul>
                         <li>
                             <div class="time">
-                                <h2>24<br><span>June</span></h2>
+                                <h2 class="text-center" >{{EDay}}<br><span>{{EMonth}}</span></h2>
                             </div>
                             <div class="details">
-                                <h3>Where does it come from</h3>
-                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                                <h3>{{EVenue}}</h3>
+                                <p>{{EDetail}}</p>
                                 <a (click)="openEvent()">View Details</a>
                             </div>
                             <div style="clear: both;"></div>
@@ -81,10 +84,30 @@
         </div> -->
 
 
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of ArrayBestLeaderData">
+        <div class="">
+            <div class="">
+                <div class="row" *ngIf="ArrayBestLeaderData.length > 0">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td *ngFor="let item of ArrayBestLeaderData">
+                                    <div class="col-md-12" >
+                                        <div class="our-team">
+                                            <div class="picture">
+                                                <img class="img-fluid" src="https://i.ibb.co/P97BxG9/person-1.png">
+                                            </div>
+                                            <div class="team-content">
+                                                <div class="name" style="color: #fff; font-size: x-large !important;font-weight: bold !important; margin-bottom: 5px !important;">
+                                                    {{item.Name}}</div>
+                                                <div class="title" style="font-size: medium; color: #fff;">Web Developer</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
+                        </table>
+                      </div>
+                    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of ArrayBestLeaderData">
                         <div class="our-team">
                             <div class="picture">
                                 <img class="img-fluid" src="https://i.ibb.co/P97BxG9/person-1.png">
@@ -95,12 +118,43 @@
                                 <div class="title" style="font-size: medium; color: #fff;">Web Developer</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
         </div>
 
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <nb-card-header>
+        <div class="col-md-12 text-center" style="font-size: larger;">
+            Achievement
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="">
+            <div class="">
+                <div class="row" *ngIf="ArrayAchievementData.length > 0">
+                    <div class="table-responsive">
+                        <table >
+                            <tr>
+                                <td *ngFor="let item of ArrayAchievementData" style="width: 250px;" >
+                                    <div class="col-md-12" >
+                                        <div class="achievement">
+                                            <i class="fa fa-user"></i>
+                                            <p class="counter-count">{{item.AchievementCount}}</p>
+                                            <span>{{item.DesignationName}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
+                        </table>
+                      </div>
+                </div>
+            </div>
+        </div>
     </nb-card-body>
 </nb-card>
 
@@ -111,7 +165,7 @@
                 <nb-card style="height: 260px;">
                     <nb-card-body style="overflow-y: hidden;">
                         <div class="form-group">
-                            <button type="submit" fullWidth nbButton outline shape="round"
+                            <button type="submit" fullWidth nbButton outline shape="round" (click)="openGallary()"
                                 status="primary">Gallary</button>
                         </div>
                         <div class="form-group">
@@ -193,20 +247,12 @@
             </div>
         </div>
         <div class="">
-            <div class="grid">
-                <img src="https://source.unsplash.com/600x400?1" alt="">
-                <img src="https://source.unsplash.com/600x400?2" alt="">
-                <img src="https://source.unsplash.com/600x400?3" alt="">
-                <img src="https://source.unsplash.com/600x400?4" alt="">
-                <img src="https://source.unsplash.com/600x400?5" alt="">
-                <img src="https://source.unsplash.com/600x400?6" alt="">
-                <img src="https://source.unsplash.com/600x400?7" alt="">
-                <img src="https://source.unsplash.com/600x400?8" alt="">
-                <img src="https://source.unsplash.com/600x400?9" alt="">
-                <img src="https://source.unsplash.com/600x400?10" alt="">
-                <img src="https://source.unsplash.com/600x400?11" alt="">
-                <img src="https://source.unsplash.com/600x400?12" alt="">
-              </div>
+
+            <div id="gallery" class="container-fluid">
+                <div *ngFor="let item of ArrayRecentEventData">
+                    <img src="{{item.Path}}" class="card1 img-responsive">
+                </div>
+            </div>
         </div>
     </nb-card-body>
 </nb-card>

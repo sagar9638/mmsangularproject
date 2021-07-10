@@ -1,11 +1,10 @@
-h1{
-    font-family: Satisfy;
-    font-size:50px;
-    text-align:center;
-    color:black;
-    padding:1%;
-  }
-  #gallery{
+.headerSpan{
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+#gallery{
     -webkit-column-count:4;
     -moz-column-count:4;
     column-count:4;

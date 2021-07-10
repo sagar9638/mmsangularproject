@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+
+.container {
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+.card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.img-block {
+    left: 0;
+    top: 0;
+    transform: translate(-5px, -5px);
+    z-index: 2;
+    transition: left .5s ease-in-out .5s,
+                transform .5s ease-in-out,
+                z-index .5s ease-in-out .2s;
+}
+
+.container:hover > .img-block {
+    left: -160px;
+    transform: translate(160px, -5px);
+    z-index: 1;
+}
+
+.img-block > img {
+    height: 100%;
+    width: 100%;
+}
+
+.info-block {
+    left: 0;
+    z-index: 1;
+    transition: left .5s ease-in-out .5s,
+                transform .5s ease-in-out,
+                z-index .5s ease-in-out .2s;
+}
+
+.container:hover > .info-block {
+    left: 155px;
+    transform: translate(-160px, 5px);
+    z-index: 2;
+}
+
+.info-block {
+    background-color: #111;
+    color: #FFF;
+}
+
+.info {
+    padding: 20px;
+}
+
+.info > p {
+    margin-top: 10px;
+}

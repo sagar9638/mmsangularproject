@@ -1,4 +1,11 @@
 <nb-card>
+    <!-- <nb-card-header class="text-center" style="font-size: x-large;">
+       {{PageName}} Gallary
+    </nb-card-header> -->
+    <nb-card-header class="text-center" style="font-size: x-large;position: relative;" (click)="Back()">
+        <b>{{PageName}} Gallary</b>
+        <span class="headerSpan"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+    </nb-card-header>
     <nb-card-body>
         <div>
             <div id="gallery"  class="container-fluid" >

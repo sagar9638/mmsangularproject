@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GlobalService } from '../../Service/global.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-gallery',
@@ -11,14 +12,23 @@ export class GalleryComponent implements OnInit {
 
   constructor(
     private service: GlobalService,
-    private af:AngularFireStorage,
+    private af: AngularFireStorage,
+
   ) { }
 
+  @Input() CategoryName: string = "";
+
   ArrayGallaryData = [];
+  PageName: string = "";
 
   async ngOnInit(): Promise<void> {
     this.service.Authentication();
-    await this.GetGallaryMasterData(" AND DeleteFlag = 'Y'  ORDER BY Id DESC");
+    if (this.CategoryName != "") {
+      this.PageName = this.CategoryName;
+      await this.GetGallaryMasterData(" AND DeleteFlag = 'Y' AND Category = 'EventCategoryWiseImage' AND SrcPath Like '" + this.CategoryName + "/%'   ORDER BY Id DESC");
+    } else {
+      await this.GetGallaryMasterData(" AND DeleteFlag = 'Y' AND Category = 'GALLARY'   ORDER BY Id DESC");
+    }
   }
 
   async GetGallaryMasterData(Condition) {
@@ -40,6 +50,15 @@ export class GalleryComponent implements OnInit {
     } else {
       this.service.AlertSuccess('error', "No Data Found..!!");
     }
+  }
+
+  Back() {
+   let ref: NbDialogRef<GalleryComponent>
+    if(!!ref)
+    {
+      ref.close();
+    }
+    
   }
 
 }

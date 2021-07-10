@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
 import { OneColumnLayoutComponent } from '../../@theme/layouts/one-column/one-column.layout';
 import { GlobalService } from '../../Service/global.service';
+import { UserDetailPopupComponent } from './user-detail-popup/user-detail-popup.component';
 
 declare function myfunction(params1, params2): any;
 declare function myfunction1(params1, params2): any;
@@ -17,7 +19,8 @@ export class TeamManagemantComponent implements OnInit {
   constructor(
     private router: Router,
     private service: GlobalService,
-    private OneColumnLayout: OneColumnLayoutComponent
+    private OneColumnLayout: OneColumnLayoutComponent,
+    private dialogService: NbDialogService
   ) { }
 
   nodes: any = [];
@@ -71,16 +74,25 @@ export class TeamManagemantComponent implements OnInit {
     }
   }
 
+  UserDetailPopupOpen(UserDetail) {
+    this.dialogService.open(UserDetailPopupComponent, {
+      context: {
+        UserDetail: UserDetail,
+      },
+    });
+  }
+
   async toggle(e) {
     let get = callHandler()
     if (get != null && get != undefined && get != "") {
       if (this.service) {
         let GetLoginRefId = this.service.GetSessionStorage("RefId");
         if (GetLoginRefId != null && GetLoginRefId != "" && GetLoginRefId != undefined) {
-          let GetPNode = this.nodes.filter(item => item.id == get.node.id)[0].RefId;
+          let GetPNode = this.nodes.filter(item => item.id == get.node.id);
+          this.UserDetailPopupOpen(GetPNode);
           let GetVal = [];
           let obj = {
-            RefId: GetPNode//get.node.id
+            RefId: GetPNode[0].RefId//get.node.id
           }
           GetVal.push(obj);
 
@@ -106,7 +118,6 @@ export class TeamManagemantComponent implements OnInit {
               }
             }
           }
-
         } else {
           this.service.AlertSuccess('info', 'Please first join our team..!!')
           this.classNameTree = "col-md-12";
@@ -118,7 +129,23 @@ export class TeamManagemantComponent implements OnInit {
     }
   }
 
-  ngAfterViewInit() {
+  async toggle1(e) {
+    let get = callHandler()
+    if (get != null && get != undefined && get != "") {
+      if (this.service) {
+        let GetLoginRefId = this.service.GetSessionStorage("RefId");
+        if (GetLoginRefId != null && GetLoginRefId != "" && GetLoginRefId != undefined) {
+          let GetPNode = this.nodes.filter(item => item.id == get.node.id);
+          this.UserDetailPopupOpen(GetPNode);
+        } else {
+          this.service.AlertSuccess('info', 'Please first join our team..!!')
+          this.classNameTree = "col-md-12";
+          this.classNameTreeChild = "";
+          this.TreeChildFlag = false;
+          this.Back();
+        }
+      }
+    }
   }
 
   Back() {

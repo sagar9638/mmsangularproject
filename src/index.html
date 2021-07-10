@@ -3,20 +3,21 @@
 
 <head>
   <meta charset="utf-8">
-  
-  <title>NEXT LEVEL</title>
+
+  <title>Team Unbeatable</title>
 
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="./assets/images/logo2.png">
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
   <script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k&libraries=places"></script>
   <!-- jQuery -->
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <!-- <script src="https://balkangraph.com/js/latest/OrgChart.js"></script> -->
-
+  <!-- <script src="https://js.instamojo.com/v1/checkout.js"></script>   -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -112,14 +113,43 @@
     <div class="blob blob-4"></div>
     <div class="blob blob-5"></div>
   </div>
+  <script src="https://js.instamojo.com/v1/checkout.js"></script>
   <script>
-    $(document).ready(function() {
-        function disableBack() { window.history.forward() }
-
-        window.onload = disableBack();
-        window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
-    });
+    function copyDivToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("a"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+    }
 </script>
+  <script >
+    $(document).ready(function () {
+      function disableBack() { window.history.forward() }
+
+      window.onload = disableBack();
+      window.onpageshow = function (evt) { if (evt.persisted) disableBack() }
+    });
+
+
+    function prev() {
+      document.getElementById('slider-container').scrollLeft -= 270;
+    }
+
+    function next() {
+      document.getElementById('slider-container').scrollLeft += 270;
+    }
+
+
+    $(".slide img").on("click", function () {
+      $(this).toggleClass('zoomed');
+      $(".overlay").toggleClass('active');
+    })
+
+/*********************************************************************************/
+
+  </script>
 </body>
 
 </html>

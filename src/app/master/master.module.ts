@@ -28,6 +28,7 @@ import {
   NbTooltipModule,
   NbWindowModule,
   NbTreeGridModule,
+  NbRouteTabsetModule,
 } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -49,6 +50,23 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { GalleryMasterComponent } from './gallery-master/gallery-master.component';
 import { MenuRightsMasterComponent } from './menu-rights-master/menu-rights-master.component';
+import { LeadUserDetailComponent } from './lead-user-detail/lead-user-detail.component';
+import { EventsMasterComponent } from './events-master/events-master.component';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { CategoryMasterComponent } from './category-master/category-master.component';
+import { UserDetailPopupComponent } from './team-managemant/user-detail-popup/user-detail-popup.component';
+import { GallaryPopupComponent } from './gallary-popup/gallary-popup.component';
+import { UserEditProfilePopupComponent } from './user-profile/user-edit-profile-popup/user-edit-profile-popup.component';
+import { PackageComponent } from './package/package.component';
+import { PackageMasterComponent } from './package-master/package-master.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogsMasterComponent } from './blogs-master/blogs-master.component';
+import { NewsMasterComponent } from './news-master/news-master.component';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
 
 @NgModule({
   declarations: [
@@ -57,7 +75,7 @@ import { MenuRightsMasterComponent } from './menu-rights-master/menu-rights-mast
     LoginComponent,
     UserMasterComponent, UserDetailComponent, HomeComponent, RaceComponent, EventsComponent, TeamManagemantComponent, NewsComponent, GalleryComponent, UserProfileComponent, MenuMasterComponent, DesignationMasterComponent, LeadUserComponent, DesignationDetailComponent
     , GalleryMasterComponent
-    , MenuRightsMasterComponent
+    , MenuRightsMasterComponent, LeadUserDetailComponent, EventsMasterComponent, CategoryMasterComponent, UserDetailPopupComponent, GallaryPopupComponent, UserEditProfilePopupComponent, PackageComponent, PackageMasterComponent, BlogsComponent, BlogsMasterComponent, NewsMasterComponent
   ],
   imports: [
     CommonModule,
@@ -96,7 +114,10 @@ import { MenuRightsMasterComponent } from './menu-rights-master/menu-rights-mast
       appId: "1:831347352282:web:8f3720c02fad2754627be3",
       measurementId: "G-MEDXHSQ72W"
     }),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NbRouteTabsetModule,
+    NgxMaskModule.forRoot(maskConfig)
+
   ],
   providers: [
     GlobalService,

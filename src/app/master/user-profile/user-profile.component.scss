@@ -271,3 +271,37 @@ font-size: 30px;
 
 
 /************************************************************************************************/
+.up-events {
+  box-shadow: 1px 2px 5px #000000;
+  padding: 0px 15px 15px 15px;
+  font-size: 18px;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+.up-events p{
+  box-shadow: 1px 2px 5px #000000;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.event-detail{
+  // box-shadow: 1px 2px 5px #000000;
+}
+.event-detail .event-box p{
+  box-shadow: 0px 2px 5px #161b31;
+  padding: 15px 30px;
+  font-size: 18px;
+  display: inline-block;
+  margin: 0;
+}
+.event-box{
+  
+}
+.event-box-detail{
+  padding: 10px;
+  box-shadow: 0px 2px 5px #161b31;
+}

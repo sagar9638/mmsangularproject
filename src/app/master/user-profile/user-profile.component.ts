@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NbDialogService } from '@nebular/theme';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { OneColumnLayoutComponent } from '../../@theme/layouts/one-column/one-column.layout';
 import { GlobalService } from '../../Service/global.service';
+import { LeadUserDetailComponent } from '../lead-user-detail/lead-user-detail.component';
+import { UserEditProfilePopupComponent } from './user-edit-profile-popup/user-edit-profile-popup.component';
 
 @Component({
   selector: 'ngx-user-profile',
@@ -13,23 +17,30 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private service: GlobalService,
     private spinner: NgxSpinnerService,
-    private OneColumnLayout: OneColumnLayoutComponent
+    private OneColumnLayout: OneColumnLayoutComponent,
+    private dialogService: NbDialogService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   UserUrl: any;
   NextPosition: any = "MANAGER";
-  NeedSell: any = "200CC";
+  NeedSell: any = "";
 
-  UserName : any;
-  DName : any;
-  MailId : any;
-  MobileNo : any;
-  City : any;
-  PUserName : any;
-  PDName : any;
-  PMailId : any;
-  PMobileNo : any;
-  PCity : any;
+  ArrayUserProfileData: any = [];
+  UserName: any;
+  DName: any;
+  MailId: any;
+  MobileNo: any;
+  City: any;
+  UrlDisplayFlag: boolean;
+  UserProfileUrl: any;
+  PUserName: any;
+  PDName: any;
+  PMailId: any;
+  PMobileNo: any;
+  PCity: any;
+  PUserProfileUrl: any;
 
   NDesignationName: any;
   CDesignationName: any;
@@ -58,16 +69,24 @@ export class UserProfileComponent implements OnInit {
         let res = await this.service.GetDataAPIS('GetUserProfileData', 'Post', GetVal);
         if (res != null && res != undefined && res != "") {
           if (res.length != 0) {
-            let ArrayUserProfileData = [];
-            ArrayUserProfileData = await res;
-            if(ArrayUserProfileData.length != 0)
-            {
-              this.UserName = ArrayUserProfileData[0].Name;
-              this.DName = ArrayUserProfileData[0].CurrentDName;
-              this.MailId = ArrayUserProfileData[0].EmailId
-              this.MobileNo = ArrayUserProfileData[0].MobileNo;
-              this.City = ArrayUserProfileData[0].City;
-              await this.GetUserPerentData(ArrayUserProfileData[0].PerentId);
+            this.ArrayUserProfileData = [];
+            this.ArrayUserProfileData = await res;
+            if (this.ArrayUserProfileData.length != 0) {
+              this.UserName = this.ArrayUserProfileData[0].Name;
+              this.DName = this.ArrayUserProfileData[0].CurrentDName;
+              this.MailId = this.ArrayUserProfileData[0].EmailId
+              this.MobileNo = this.ArrayUserProfileData[0].MobileNo;
+              this.City = this.ArrayUserProfileData[0].City;
+              this.UrlDisplayFlag = this.ArrayUserProfileData[0].ConfirmFlag == "Y"?true:false;
+              
+              if(!!this.ArrayUserProfileData[0].UserProfileUrl)
+              {
+              this.UserProfileUrl = this.ArrayUserProfileData[0].UserProfileUrl
+              }
+              else{
+                this.UserProfileUrl = 'https://i.ibb.co/P97BxG9/person-1.png';
+              }
+              await this.GetUserPerentData(this.ArrayUserProfileData[0].PerentId);
             }
           }
         }
@@ -86,7 +105,7 @@ export class UserProfileComponent implements OnInit {
         let GetDId = this.service.GetSessionStorage("DId").replace(/["']/g, "");
         let GetVal = [];
         let obj = {
-          p_Condition: " AND CurrDId = " + parseInt( GetDId)
+          p_Condition: " AND CurrDId = " + parseInt(GetDId)
         }
         GetVal.push(obj);
 
@@ -95,18 +114,15 @@ export class UserProfileComponent implements OnInit {
           if (res.length != 0) {
             let ArrayUserDesignationData = [];
             ArrayUserDesignationData = await res;
-            if(ArrayUserDesignationData.length > 0)
-            {
+            if (ArrayUserDesignationData.length > 0) {
               this.NDesignationName = ArrayUserDesignationData[0].NextDName;
               this.CDesignationName = ArrayUserDesignationData[0].CurrDName;
               this.PDesignationName = ArrayUserDesignationData[0].PreDName
-              
-              if(this.NDesignationName == "")
-              {
+              this.NeedSell = (ArrayUserDesignationData[0].NextAchiveCount - ArrayUserDesignationData[0].CurrAchiveCount) * 2 + "CC";
+              if (this.NDesignationName == "") {
                 this.NDesignationName = "-";
               }
-              if(this.PDesignationName == "")
-              {
+              if (this.PDesignationName == "") {
                 this.PDesignationName = "-";
               }
 
@@ -137,13 +153,19 @@ export class UserProfileComponent implements OnInit {
           if (res.length != 0) {
             let ArrayUserPerentData = [];
             ArrayUserPerentData = await res;
-            if(ArrayUserPerentData.length != 0)
-            {
+            if (ArrayUserPerentData.length != 0) {
               this.PUserName = ArrayUserPerentData[0].Name;
               this.PDName = ArrayUserPerentData[0].CurrentDName;
               this.PMailId = ArrayUserPerentData[0].EmailId
               this.PMobileNo = ArrayUserPerentData[0].MobileNo;
               this.PCity = ArrayUserPerentData[0].City;
+              if(!!ArrayUserPerentData[0].UserProfileUrl)
+              {
+              this.PUserProfileUrl = ArrayUserPerentData[0].UserProfileUrl
+              }
+              else{
+                this.PUserProfileUrl = 'https://i.ibb.co/P97BxG9/person-1.png';
+              }
             }
           }
         }
@@ -167,12 +189,46 @@ export class UserProfileComponent implements OnInit {
       else {
         refId = "";
       }
-      let url = GetOrgUrl[0] + '#/master/Register/' + refId;
+      //let url = GetOrgUrl[0] + '#/master/Register/' + this.service.encryptUsingAES256(refId);
+      let url = GetOrgUrl[0] + '#/master/Register?RefId=' + this.service.encryptUsingAES256(refId);
       this.UserUrl = url;
-      if (openNewTabFalg) {
-        window.open(url, '_blank');
+      if(openNewTabFalg)
+      {
+      const selBox = document.createElement('textarea');
+      selBox.style.position = 'fixed';
+      selBox.style.left = '0';
+      selBox.style.top = '0';
+      selBox.style.opacity = '0';
+      selBox.value = this.UserUrl;
+      document.body.appendChild(selBox);
+      selBox.focus();
+      selBox.select();
+      document.execCommand('copy');
+      document.body.removeChild(selBox);
+      this.service.AlertSuccess('info', 'Copy URL Successfully..!!')
+      //this.router.navigate(['/master/Register/'], { queryParams: { RefId: refId } });
       }
+      // if (openNewTabFalg) {
+      //   window.open(url, '_blank');
+      // }
     }
+  }
+
+  LeadUserDetail(Flag) {
+    this.dialogService.open(LeadUserDetailComponent, {
+      context: {
+        Flag: Flag,
+      },
+    });
+  }
+
+  UserEditProfilePopupOpen() {
+    
+    this.dialogService.open(UserEditProfilePopupComponent, {
+      context: {
+        UserDetail: this.ArrayUserProfileData,
+      },
+    });
   }
 
 

@@ -23,6 +23,7 @@ import {
 import { MasterComponent } from './master/master.component';
 import { FormsModule } from '@angular/forms';
 import { MasterModule } from './master/master.module';
+import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
   declarations: [AppComponent, MasterComponent],
   imports: [
@@ -36,6 +37,7 @@ import { MasterModule } from './master/master.module';
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
+    NgxMaskModule.forRoot(),
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),

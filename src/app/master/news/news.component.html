@@ -1,7 +1,28 @@
-<nb-card>
-    <nb-card-header>
-        <div class="text-center" style="font-size: larger;" >
-            Under Development
+<!-- <nb-card>
+    <nb-card-body> -->
+        <nb-card>
+            <nb-card-header class="text-center" style="font-size: x-large;">
+                News
+            </nb-card-header>
+        </nb-card>        
+
+        <div class="container">
+            <div class="grid" >
+                <div class="card" *ngFor="let res of resNews">
+                    <div class="card_img">
+                        <img [src]="res.imagesrc"
+                            alt="">
+                    </div>
+                    <div class="card_body">
+                        <h2 class="card_title">{{res.title}}</h2>
+                        <p>{{res.text}}</p>
+                        
+                        <a href="#" class="read_more">Read article</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nb-card-header>
-</nb-card>
+    
+        <!-- </nb-card-body>
+
+</nb-card> -->

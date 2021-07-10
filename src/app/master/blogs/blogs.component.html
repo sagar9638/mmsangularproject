@@ -1,0 +1,30 @@
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Blogs
+    </nb-card-header>
+    <nb-card-body>
+        <div class="main">
+            <div class="card" *ngFor="let res of resBlogs" >
+            <div class="post">
+              <img class="post-image" [src]="res.imagesrc"/>
+              
+              <div class="post-content">
+                <p class="post-header"> <a href="#">{{res.title}}</a> </p>
+                <p class="post-text">
+                    {{res.text}}
+                </p>
+                <div class="author">
+                  <img [src]="res.authorimagesrc" alt="" class="author-image">
+                  <div class="author-content">
+                    <p class="author-name">{{res.authorname}}</p>
+                    <p class="date post-text">{{res.date}}</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+  

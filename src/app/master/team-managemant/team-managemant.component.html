@@ -6,10 +6,10 @@
     <nb-card-body>
         <div class="row col-md-12">
             <div [class]="classNameTree">
-                <div id="tree" #treeValue class="orgChart" (click)="toggle($event)"></div>
+                <div id="tree" #treeValue class="orgChart" (click)="toggle($event)" ></div>
             </div>
             <div [class]="classNameTreeChild">
-                <div id="treeChild" #treeChild class="orgChart"></div>
+                <div id="treeChild" #treeChild class="orgChart" (click)="toggle1($event)" ></div>
             </div>
         </div>
     </nb-card-body>

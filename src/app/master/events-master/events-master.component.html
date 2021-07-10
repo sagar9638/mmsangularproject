@@ -1,0 +1,198 @@
+<ngx-spinner></ngx-spinner>
+
+<nb-tabset>
+    <nb-tab tabTitle="Event Master">
+        <nb-card>
+            <nb-card-header class="text-center" style="font-size: x-large;">
+                Event Master
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label class="label">Leader Name</label>
+                                <input type="text" [(ngModel)]="LeaderName" nbInput fullWidth id="LeaderName"
+                                    placeholder="Leader Name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label class="label">Event Venue</label>
+                                <input type="text" [(ngModel)]="EVenue" nbInput fullWidth id="EVenue"
+                                    placeholder="Event Venue">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label class="label">Event Date</label>
+                                <input type="text" #EventDate [(ngModel)]="EDate" mask="d0/M0/0000"
+                                    [leadZeroDateTime]="true" nbInput fullWidth id="EDate" placeholder="dd/MM/yyyy">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                <label class="label">Event Time</label>
+                                <input type="text" #EventTime [(ngModel)]="ETime" mask="Hh:m0" [leadZeroDateTime]="true"
+                                    nbInput fullWidth id="ETime" placeholder="HH:mm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12">
+                            <div class="form-group">
+                                <label class="label">Event Detail</label>
+                                <textarea rows="3" [(ngModel)]="EDetail" nbInput fullWidth shape="round"
+                                    placeholder="Text Area"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <button type="submit" fullWidth nbButton outline (click)="SaveData()"
+                                        status="success">Add</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" fullWidth nbButton outline (click)="Cancle()"
+                                        status="danger">Cancle</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+        <nb-card>
+            <nb-card-body>
+                <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="onUpdateConfirm($event)"
+                    (deleteConfirm)="onDeleteConfirm($event)">
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+
+    </nb-tab>
+    <nb-tab tabTitle="Event Video Upload">
+
+        <nb-card>
+            <nb-card-header class="text-center" style="font-size: x-large;">
+                Event Video Upload
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-8">
+                            <div class="form-group">
+                                <label class="label">Video Upload</label>
+                                <input type="file" #myInput nbInput fullWidth (change)="upload($event)" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="label">&nbsp;</label>
+                                <button type="submit" fullWidth nbButton outline (click)="AddImage('EventHighLight')"
+                                    status="success">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" [src]="ArrayEVideoData" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-tab>
+    <nb-tab tabTitle="Event Image Upload">
+        <nb-card>
+            <nb-card-header class="text-center" style="font-size: x-large;">
+                Event Image Upload
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-8">
+                            <div class="form-group">
+                                <label class="label">Image Upload</label>
+                                <input type="file" #myInputImage nbInput fullWidth (change)="upload($event)" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="label">&nbsp;</label>
+                                <button type="submit" fullWidth nbButton outline
+                                    (click)="AddImage('UserDisplayEventImage')" status="success">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="gallery" class="container-fluid">
+                            <div *ngFor="let item of ArrayEImageData">
+                                <img src="{{item.Path}}" (click)="DeleteData(item.Id,'UserDisplayEventImage')"
+                                    class="card img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-tab>
+    <nb-tab tabTitle="Event Category Wise Image Upload">
+        <nb-card>
+            <nb-card-header class="text-center" style="font-size: x-large;">
+                Event Category Wise Image Upload
+            </nb-card-header>
+            <nb-card-body>
+                <div>
+                    <div class="row">
+
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <label class="label">Category</label>
+                                <nb-select placeholder="Category" fullWidth [(ngModel)]="Category">
+                                    <nb-option *ngFor="let item of ArrayCategoryData" value="{{item.EVenue}}">
+                                        {{item.EVenue}}</nb-option>
+                                </nb-select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
+                                <label class="label">Image Upload</label>
+                                <input type="file" #myInputImageCategory nbInput fullWidth (change)="upload($event)"
+                                    id="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="label">&nbsp;</label>
+                                <button type="submit" fullWidth nbButton outline
+                                    (click)="AddImage('EventCategoryWiseImage')" status="success">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" *ngFor="let eitem of ArrayCategoryData">
+                            <div class="col-md-12" style="margin-bottom: 5px;font-size: larger;"> 
+                                <button type="submit" fullWidth nbButton outline shape="round" status="warning">{{eitem.EVenue}}</button>
+                            </div>
+                            <div id="gallery" class="container-fluid">
+                                <div class="row " *ngFor="let item of ArrayEImageCategoryData" style="width: 200px;" >
+                                    <span  *ngIf="eitem.EVenue == item.EVenue">
+                                        <img  src="{{item.Path}}" class="card img-responsive">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-tab>
+</nb-tabset>

@@ -1,7 +1,100 @@
 <nb-card>
-    <nb-card-header>
-        <div class="text-center" style="font-size: larger;" >
-           Event Under Development
-        </div>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Event
     </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="up-events">
+                    <p>Upcoming Events</p>
+                    <div>
+                        <div class="form-group row">
+                            <label for="inputVenue" class="label col-sm-3 col-form-label">Venue</label>
+                            <div class="col-sm-9">
+                                <input type="text" [(ngModel)]="EVenue" disabled nbInput fullWidth id="inputVenue"
+                                    placeholder="Venue">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputDate" class="label col-sm-3 col-form-label">Date</label>
+                            <div class="col-sm-9">
+                                <input type="text" [(ngModel)]="EDate" disabled nbInput fullWidth id="inputDate"
+                                    placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputTime" class="label col-sm-3 col-form-label">Time</label>
+                            <div class="col-sm-9">
+                                <input type="text" [(ngModel)]="ETime" disabled nbInput fullWidth id="inputTime"
+                                    placeholder="Time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="up-events">
+                    <p>Events Details</p>
+                    <div style="padding: 2px 20px;">
+                        {{EDetail}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" fullWidth nbButton outline status="success">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;">
+        Event HighLight
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <!-- <div class="col-md-12 text-center" style="padding: 0px;">
+                <iframe class="col-md-12 " style="border: 2px;" height="810" width="1920"
+                    [src]="ArrayEVideoData"></iframe>
+            </div> -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" [src]="ArrayEVideoData" allowfullscreen></iframe>
+              </div>
+    
+        </div>
+
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <nb-card-body>
+        <div>
+            <div id="slider-container" class="slider"  >
+                <div class="slide"  *ngFor="let item of ArrayEImageData">
+                    <img src="{{item.Path}}" alt="">
+                </div>
+              
+             
+                <div onclick="prev()" class="control-prev-btn">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <div onclick="next()" class="control-next-btn">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="overlay"></div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card>
+    <nb-card-body>
+        <div class="row"  >
+            <div class="col-md-3" *ngFor="let item of EventAllData" >
+                <button type="submit" fullWidth nbButton outline shape="round" (click)="EventCategoryOpen(item.EVenue)"  status="success">{{item.EVenue}}</button>
+            </div>
+        </div>
+    </nb-card-body>
 </nb-card>

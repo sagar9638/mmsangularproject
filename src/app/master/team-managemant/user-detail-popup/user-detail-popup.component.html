@@ -1,0 +1,61 @@
+<div class="container">
+    <figure class="card img-block">
+        <img [src]="UserDetail[0].img"
+            alt="image">
+    </figure>
+    <div class="card info-block">
+        <div class="info">
+            <h2>{{UserDetail[0].name}}<span style="font-size: small;" >(&nbsp; {{UserDetail[0].title}} &nbsp;)</span></h2>
+            <div>
+                <span><i class="ion-ios-telephone"></i></span> {{UserDetail[0].MobileNo}}
+            </div>
+            <div>
+                <span><i class="ion-ios-email"></i></span> {{UserDetail[0].email}}
+            </div>
+            <div>
+                <span><i class="fa fa-map-marker"></i></span> {{UserDetail[0].city}}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <nb-card>
+    <nb-card-header class="text-center" style="font-size: x-large;position: relative;" (click)="Back()">
+        <b>User Detail</b>
+        <span class="headerSpan"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row col-md-12">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label class="label">User Name</label>
+                    <input type="text" [(ngModel)]="UName" nbInput fullWidth id="UName"
+                        placeholder="User Name">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label class="label">Mobile No</label>
+                    <input type="text" [(ngModel)]="MobileNo" nbInput fullWidth id="MobileNo"
+                        placeholder="Mobile No">
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label class="label">Email Id</label>
+                    <input type="text" [(ngModel)]="EMail" nbInput fullWidth id="email"
+                        placeholder="Email Id">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label class="label">City</label>
+                    <input type="text" [(ngModel)]="City" nbInput fullWidth id="City"
+                        placeholder="City">
+                </div>
+            </div>
+        </div>
+        
+    </nb-card-body>
+</nb-card> -->

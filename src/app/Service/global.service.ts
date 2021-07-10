@@ -8,6 +8,10 @@ import * as CryptoJS from 'crypto-js';
 import { EditorValidator, EditorArgs } from 'angular-slickgrid';
 import { Router } from '@angular/router';
 
+function _window() : any {
+  // return the global native browser window object
+  return window;
+}
 
 const myCustomGSTValidator: EditorValidator = (value: any, args: EditorArgs) => {
 
@@ -103,7 +107,7 @@ export class GlobalService {
   }
 
   tokenFromUI: string = "0123456789123456";
-  //baseUrl: any = 'http://localhost:8585/api/'; local url 
+  //baseUrl: any = 'http://localhost:8585/api/'; //local url 
   baseUrl: any = 'https://mmsnodejsapi.herokuapp.com/api/'; // live url
   _global = [
     { keyName: "dd-MM-YYYY", keyValue: "dd-MM-YYYY" },
@@ -176,7 +180,7 @@ export class GlobalService {
         JSON.stringify(value), _key, {
         keySize: 16,
         iv: _iv,
-        mode: CryptoJS.mode.ECB,
+        mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
       });
     }
@@ -191,9 +195,9 @@ export class GlobalService {
 
       return CryptoJS.AES.decrypt(
         value, _key, {
-        keySize: 16,
+        keySize: 10,
         iv: _iv,
-        mode: CryptoJS.mode.ECB,
+        mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
       }).toString(CryptoJS.enc.Utf8);
     }
@@ -248,6 +252,35 @@ export class GlobalService {
     }
   }
 
+  async GetDataAPISInstaMojo(route: string, method: string, data?: any) {
+    try {
+      let header = null;
+      if (!!this.GetSessionStorage("Token")) {
+        let Token = this.GetSessionStorage("Token").replace(/"/g, '');
+        header = {  'Content-Type': '*',  
+                    'Access-Control-Allow-Origin': '*',
+                    'X-Api-Key' : 'bd052d9e5dab2d95994438a03fda85cf',
+                    'X-Auth-Token' : '9cfe5478ac71df7e1ee54913eeedec73',
+                    "content-type": "application/x-www-form-urlencoded",
+                    "cache-control": "no-cache"
+                 };
+      }
+      return await this.http.request(method, route, {
+        body: data,
+        responseType: 'json',
+        observe: 'body',
+        headers: header
+      }).toPromise().then((response: any) => response);
+    } catch (error) {
+      if (error.statusText == "Unauthorized" && error.status == 401) {
+        this.AlertSuccess('error', error.statusText + " User.!! ");
+        this.ClearSessionStorage();
+        this.router.navigate(['/Register']);
+      }
+      return error;
+    }
+  }
+
   async getIPAddress() {
     try {
       return await this.https.get("https://jsonip.com/").toPromise();
@@ -266,7 +299,7 @@ export class GlobalService {
     // });
 
     const config = {
-      status: _icontype
+      status: _icontype,
     };
     this.toastrService.show(_title, _icontype, config)
   }
@@ -760,5 +793,16 @@ export class GlobalService {
       }
     
   }
+
+  getUniqArrBy = (props = [], arrInp = [{}]) => {
+    return Object.values(arrInp.reduce((res, item) => {
+      const keyComb = props.reduce((res, prop) => `${res}${item[prop]}`, '')
+      return { ...res, [keyComb]: item }
+    }, []))
+  }
+
+  get nativeWindow() : any {
+    return _window();
+ }
 
 }
